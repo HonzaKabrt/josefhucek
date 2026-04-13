@@ -38,6 +38,7 @@
       color: var(--text);
       background:
         radial-gradient(circle at top left, rgba(240, 180, 41, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(15, 45, 92, 0.08), transparent 24%),
         linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
       line-height: 1.6;
     }
@@ -59,6 +60,25 @@
 
     .section {
       padding: 88px 0;
+    }
+
+    .section-alt {
+      position: relative;
+    }
+
+    .section-alt::before {
+      content: "";
+      position: absolute;
+      inset: 18px 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(238, 243, 249, 0.82));
+      border-top: 1px solid rgba(15, 45, 92, 0.05);
+      border-bottom: 1px solid rgba(15, 45, 92, 0.05);
+      pointer-events: none;
+    }
+
+    .section-alt .container {
+      position: relative;
+      z-index: 1;
     }
 
     .section-header {
@@ -185,12 +205,43 @@
 
     .hero-copy {
       padding: 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 180, 41, 0.2), transparent 70%);
+      pointer-events: none;
     }
 
     .hero-copy p.lead {
       max-width: 60ch;
       font-size: 1.1rem;
       margin-bottom: 28px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 18px;
+    }
+
+    .hero-badge {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(15, 45, 92, 0.06);
+      border: 1px solid rgba(15, 45, 92, 0.08);
+      color: var(--primary);
+      font-size: 0.92rem;
+      font-weight: 700;
     }
 
     .hero-location {
@@ -323,12 +374,28 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-4px);
       border-color: rgba(15, 45, 92, 0.2);
       box-shadow: 0 22px 44px rgba(12, 26, 53, 0.12);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), rgba(15, 45, 92, 0.25));
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card p {
@@ -445,6 +512,40 @@
       background: var(--surface-soft);
       color: var(--text);
       font-weight: 600;
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(180deg, rgba(15, 45, 92, 0.98), rgba(11, 33, 69, 0.98));
+      border-color: rgba(240, 180, 41, 0.22);
+    }
+
+    .pricing-card.featured h3,
+    .pricing-card.featured p,
+    .pricing-card.featured strong,
+    .pricing-card.featured .pricing-price {
+      color: #fff;
+    }
+
+    .pricing-card.featured .pricing-item {
+      border-bottom-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .pricing-card.featured .pricing-note {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .pricing-kicker {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(240, 180, 41, 0.14);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .contact-item {
@@ -609,6 +710,7 @@
         <a href="#sluzby">Služby</a>
         <a href="#vyhody">Proč si vybrat mě</a>
         <a href="#postup">Jak to probíhá</a>
+        <a href="#cenik">Ceník</a>
         <a href="#omne">O mně</a>
         <a class="nav-contact" href="#kontakt">Kontakt</a>
       </nav>
@@ -620,6 +722,11 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="eyebrow">Elektroinstalace a drobné práce</div>
+          <div class="hero-badges">
+            <div class="hero-badge">Lokální elektrikář</div>
+            <div class="hero-badge">Byty, domy i menší zakázky</div>
+            <div class="hero-badge">České Budějovice a okolí</div>
+          </div>
           <h1>Elektrikář České Budějovice – Josef Hucek</h1>
           <p class="lead">
             Provádím elektroinstalace, opravy a drobné elektromontážní práce pro byty, domy i menší zakázky v Českých Budějovicích a okolí.
@@ -664,7 +771,7 @@
       </div>
     </section>
 
-    <section class="section anchor-offset" id="sluzby">
+    <section class="section section-alt anchor-offset" id="sluzby">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow">S čím vám pomohu</div>
@@ -721,7 +828,7 @@
       </div>
     </section>
 
-    <section class="section anchor-offset" id="vyhody">
+    <section class="section section-alt anchor-offset" id="vyhody">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow">Proč právě Josef Hucek</div>
@@ -791,7 +898,7 @@
       </div>
     </section>
 
-    <section class="section anchor-offset" id="omne">
+    <section class="section section-alt anchor-offset" id="omne">
       <div class="container about-grid">
         <div class="about-card">
           <div class="eyebrow">O mně</div>
@@ -840,7 +947,7 @@
       </div>
     </section>
 
-    <section class="section anchor-offset" id="kontakt">
+    <section class="section anchor-offset" id="cenik">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow">Orientační ceník</div>
@@ -885,7 +992,8 @@
             </div>
           </div>
 
-          <div class="pricing-card">
+          <div class="pricing-card featured">
+            <div class="pricing-kicker">Nejčastější zakázky</div>
             <h3>Větší práce a individuální nabídka</h3>
             <div class="pricing-list">
               <div class="pricing-item">
@@ -918,7 +1026,7 @@
       </div>
     </section>
 
-    <section class="section anchor-offset" id="kontakt">
+    <section class="section section-alt anchor-offset" id="kontakt">
       <div class="container">
         <div class="section-header">
           <div class="eyebrow">Kontakt a poptávka</div>
