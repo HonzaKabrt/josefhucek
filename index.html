@@ -124,28 +124,18 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-weight: 800;
+      gap: 16px;
       color: var(--primary);
     }
 
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--primary), #1f4d91);
-      color: #fff;
-      font-size: 1.1rem;
-      box-shadow: 0 12px 24px rgba(15, 45, 92, 0.2);
+    .brand-logo {
+      width: clamp(180px, 22vw, 260px);
+      height: auto;
+      display: block;
     }
 
-    .brand-text span {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
+    .brand-text {
+      display: none;
     }
 
     .nav-links {
@@ -379,13 +369,15 @@
     }
 
     .about-grid,
-    .contact-grid {
+    .contact-grid,
+    .pricing-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 26px;
     }
 
     .about-card,
+    .pricing-card,
     .contact-card,
     .form-card {
       padding: 34px;
@@ -410,6 +402,49 @@
       display: grid;
       gap: 14px;
       margin-top: 28px;
+    }
+
+    .pricing-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .pricing-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(15, 45, 92, 0.08);
+    }
+
+    .pricing-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .pricing-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .pricing-price {
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .pricing-note {
+      margin-top: 24px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      color: var(--text);
+      font-weight: 600;
     }
 
     .contact-item {
@@ -498,6 +533,7 @@
     @media (max-width: 1080px) {
       .hero-grid,
       .about-grid,
+      .pricing-grid,
       .contact-grid,
       .services-grid,
       .benefits-grid,
@@ -517,6 +553,10 @@
         flex-direction: column;
       }
 
+      .brand-logo {
+        width: min(240px, 58vw);
+      }
+
       .nav-links {
         gap: 14px;
       }
@@ -527,6 +567,7 @@
 
       .hero-grid,
       .about-grid,
+      .pricing-grid,
       .contact-grid,
       .services-grid,
       .benefits-grid,
@@ -562,11 +603,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#uvod" aria-label="Josef Hucek">
-        <div class="brand-mark">JH</div>
-        <div class="brand-text">
-          Josef Hucek
-          <span>Elektrikář České Budějovice a okolí</span>
-        </div>
+        <img class="brand-logo" src="logo-josef-hucek.png" alt="Josef Hucek Elektrikář České Budějovice">
       </a>
       <nav class="nav-links" aria-label="Hlavní navigace">
         <a href="#sluzby">Služby</a>
@@ -589,8 +626,7 @@
           </p>
           <div class="hero-location">Působím v lokalitě České Budějovice a okolí</div>
           <div class="hero-actions">
-            <a class="button button-primary" href="tel:+420123456789">Zavolat</a>
-            <a class="button button-secondary" href="#kontakt">Nezávazně poptat</a>
+            <a class="button button-primary" href="#kontakt">Nezávazně poptat</a>
           </div>
         </div>
 
@@ -798,6 +834,84 @@
                 <strong>Montáž světel České Budějovice</strong>
                 <p>Montáž a výměna svítidel, světel a navazujících elektro prvků.</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section anchor-offset" id="kontakt">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Orientační ceník</div>
+          <h2>Jednoduché a srozumitelné ceny</h2>
+          <p>
+            U menších prací je důležité vědět aspoň přibližnou cenu předem. Níže je orientační ceník běžných služeb. Přesná cena vždy záleží na rozsahu práce, použitém materiálu a místě realizace.
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3>Běžné práce a výjezdy</h3>
+            <div class="pricing-list">
+              <div class="pricing-item">
+                <div>
+                  <strong>Diagnostika závady a drobná oprava</strong>
+                  <p>Zjištění příčiny problému, základní opravy a běžné úkony v domácnosti.</p>
+                </div>
+                <div class="pricing-price">od 800 Kč</div>
+              </div>
+              <div class="pricing-item">
+                <div>
+                  <strong>Montáž zásuvky nebo vypínače</strong>
+                  <p>Výměna starého prvku nebo montáž nového podle konkrétní situace.</p>
+                </div>
+                <div class="pricing-price">od 450 Kč</div>
+              </div>
+              <div class="pricing-item">
+                <div>
+                  <strong>Montáž světla nebo svítidla</strong>
+                  <p>Běžná montáž stropního či nástěnného světla včetně zapojení.</p>
+                </div>
+                <div class="pricing-price">od 600 Kč</div>
+              </div>
+              <div class="pricing-item">
+                <div>
+                  <strong>Hodinová sazba práce</strong>
+                  <p>Vhodné pro menší zásahy, opravy elektroinstalace a průběžné práce.</p>
+                </div>
+                <div class="pricing-price">700 Kč / hod</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <h3>Větší práce a individuální nabídka</h3>
+            <div class="pricing-list">
+              <div class="pricing-item">
+                <div>
+                  <strong>Částečná rekonstrukce elektroinstalace</strong>
+                  <p>Úpravy vybraných místností, výměna prvků nebo doplnění nových rozvodů.</p>
+                </div>
+                <div class="pricing-price">dle rozsahu</div>
+              </div>
+              <div class="pricing-item">
+                <div>
+                  <strong>Kontrola stavu elektroinstalace</strong>
+                  <p>Posouzení stávajícího stavu a doporučení dalšího postupu před opravou nebo rekonstrukcí.</p>
+                </div>
+                <div class="pricing-price">od 1 000 Kč</div>
+              </div>
+              <div class="pricing-item">
+                <div>
+                  <strong>Doprava po Českých Budějovicích</strong>
+                  <p>U běžných zakázek podle místa realizace a navazujícího rozsahu prací.</p>
+                </div>
+                <div class="pricing-price">individuálně</div>
+              </div>
+            </div>
+            <div class="pricing-note">
+              Menší práce a opravy elektro České Budějovice často vyřešíme rychle po telefonu. U větších zakázek připravím nezávaznou orientační nabídku předem.
             </div>
           </div>
         </div>
