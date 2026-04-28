@@ -452,11 +452,17 @@
     }
 
     .about-grid,
-    .contact-grid,
     .pricing-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 26px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+      max-width: 760px;
     }
 
     .about-card,
@@ -980,10 +986,10 @@
     <section class="section section-alt anchor-offset" id="kontakt">
       <div class="container">
         <div class="section-header">
-          <div class="eyebrow">Kontakt a poptávka</div>
+          <div class="eyebrow">Kontakt</div>
           <h2>Ozvěte se a domluvíme další postup</h2>
           <p>
-            Pokud hledáte elektrikáře pro České Budějovice a okolí, stačí zavolat, napsat e-mail nebo vyplnit krátký formulář. Poptávka je nezávazná.
+            Pokud hledáte elektrikáře pro České Budějovice a okolí, stačí zavolat nebo napsat e-mail. Rád s vámi proberu rozsah práce i vhodný termín.
           </p>
         </div>
 
@@ -1021,46 +1027,6 @@
             <div class="contact-highlight">
               Potřebujete opravu, montáž nebo konzultaci? Napište stručný popis a preferovaný termín. Odpovím co nejdříve.
             </div>
-          </div>
-
-          <div class="form-card">
-            <h3>Nezávazná poptávka</h3>
-            <form action="https://formsubmit.co/josefhucek@elektro-hucek.cz" method="POST">
-              <input type="hidden" name="_subject" value="Nezávazná poptávka z webu elektro-hucek.cz">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_next" value="https://elektro-hucek.cz/#kontakt">
-              <div class="field-row">
-                <label>
-                  Jméno
-                  <input type="text" name="jmeno" placeholder="Vaše jméno" required>
-                </label>
-                <label>
-                  Telefon
-                  <input type="tel" name="telefon" placeholder="+420 ..." required>
-                </label>
-              </div>
-
-              <div class="field-row">
-                <label>
-                  E-mail
-                  <input type="email" name="email" placeholder="vas@email.cz" required>
-                </label>
-                <label>
-                  Lokalita
-                  <input type="text" name="lokalita" placeholder="České Budějovice / okolí">
-                </label>
-              </div>
-
-              <label>
-                Zpráva
-                <textarea name="zprava" placeholder="Stručně popište, s čím potřebujete pomoci." required></textarea>
-              </label>
-
-              <button class="button button-primary" type="submit">Odeslat</button>
-              <p class="form-note">
-                Formulář odešle poptávku přímo na e-mail. Při úplně prvním odeslání může být potřeba potvrdit cílovou adresu v potvrzovacím e-mailu.
-              </p>
-            </form>
           </div>
         </div>
       </div>
