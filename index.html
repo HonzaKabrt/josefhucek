@@ -624,19 +624,6 @@
       font-size: 0.95rem;
     }
 
-    .form-status {
-      display: none;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(15, 45, 92, 0.08);
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    .form-status.is-visible {
-      display: block;
-    }
-
     .footer {
       padding: 30px 0 40px;
       border-top: 1px solid rgba(15, 45, 92, 0.08);
@@ -1038,7 +1025,10 @@
 
           <div class="form-card">
             <h3>Nezávazná poptávka</h3>
-            <form id="contact-form">
+            <form action="https://formsubmit.co/josefhucek@elektro-hucek.cz" method="POST">
+              <input type="hidden" name="_subject" value="Nezávazná poptávka z webu elektro-hucek.cz">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://elektro-hucek.cz/#kontakt">
               <div class="field-row">
                 <label>
                   Jméno
@@ -1067,9 +1057,8 @@
               </label>
 
               <button class="button button-primary" type="submit">Odeslat</button>
-              <p class="form-status" id="form-status">Otevírám připravený e-mail s vaší poptávkou.</p>
               <p class="form-note">
-                Po odeslání se otevře váš e-mailový klient s připravenou zprávou. Pokud se okno neotevře, použijte prosím kontakt uvedený vedle formuláře.
+                Formulář odešle poptávku přímo na e-mail. Při úplně prvním odeslání může být potřeba potvrdit cílovou adresu v potvrzovacím e-mailu.
               </p>
             </form>
           </div>
@@ -1098,38 +1087,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    const contactForm = document.getElementById("contact-form");
-    const formStatus = document.getElementById("form-status");
-
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        if (!contactForm.reportValidity()) {
-          return;
-        }
-
-        const formData = new FormData(contactForm);
-        const jmeno = (formData.get("jmeno") || "").toString().trim();
-        const telefon = (formData.get("telefon") || "").toString().trim();
-        const email = (formData.get("email") || "").toString().trim();
-        const lokalita = (formData.get("lokalita") || "").toString().trim();
-        const zprava = (formData.get("zprava") || "").toString().trim();
-
-        const subject = encodeURIComponent("Nezávazná poptávka z webu");
-        const body = encodeURIComponent(
-          "Jméno: " + jmeno + "\n" +
-          "Telefon: " + telefon + "\n" +
-          "E-mail: " + email + "\n" +
-          "Lokalita: " + lokalita + "\n\n" +
-          "Zpráva:\n" + zprava
-        );
-
-        formStatus.classList.add("is-visible");
-        window.location.href = "mailto:josefhucek@elektro-hucek.cz?subject=" + subject + "&body=" + body;
-      });
-    }
   </script>
 </body>
 </html>
